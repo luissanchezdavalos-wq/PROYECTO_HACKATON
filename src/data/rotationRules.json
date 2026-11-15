@@ -1,0 +1,56 @@
+{
+  "_note": "Illustrative rotation and scoring thresholds. Unvalidated until reviewed by an agronomist. Edit weights and rules here; the engine reads them directly.",
+  "soilTypes": ["Clay", "Clay loam", "Loam", "Sandy loam", "Sandy"],
+  "waterLevels": ["low", "medium", "high"],
+  "weights": {
+    "climate": 0.3,
+    "soil": 0.2,
+    "rotation": 0.2,
+    "water": 0.15,
+    "nutrients": 0.15
+  },
+  "verdictThresholds": {
+    "recommended": 70,
+    "conditional": 50
+  },
+  "climateGate": {
+    "minimumScore": 30
+  },
+  "climate": {
+    "hotDayThresholdC": 40,
+    "hotDayPenaltyPerDay": 8,
+    "maxHotDayPenalty": 40,
+    "rainfallBonusMm": 50
+  },
+  "soilScores": {
+    "suitable": 100,
+    "tolerable": 60,
+    "unsuitable": 20
+  },
+  "waterScores": {
+    "sufficient": 100,
+    "shortByOne": 50,
+    "shortByTwoOrMore": 10
+  },
+  "rotation": {
+    "unknownPreviousScore": 75,
+    "sameFamilyScore": 10,
+    "sameFamilyExempt": ["cover"],
+    "preferredAfterScore": 100,
+    "neutralScore": 60,
+    "preferredAfter": {
+      "cereal": ["legume", "cover"],
+      "legume": ["cereal", "cover"],
+      "cover": ["cereal"]
+    }
+  },
+  "nutrients": {
+    "unknownPreviousScore": 70,
+    "legumeAfterHeavyFeederScore": 100,
+    "legumeScore": 80,
+    "heavyAfterLegumeScore": 95,
+    "heavyAfterHeavyScore": 35,
+    "defaultScore": 65
+  },
+  "maxScheduledCrops": 4
+}
